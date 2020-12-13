@@ -4,20 +4,28 @@ using UnityEngine;
 
 public class WaveController : MonoBehaviour
 {
-    private int wave = 0;
-    private int waveMax = 10;
-    private int monstersAlive = 0;
-
+    public int wave = -1;
+    public Monster monster;
+    private MonsterMovement monsterMovement;
+    private float monstersAlive = 0;
+    private float monstersToSpawn = 2;
+    private float increaseDiffTime = 10.0f;
+    public float period = 10.0f;
     private bool gameStarted = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        monsterMovement = monster.GetComponent<MonsterMovement>();
     }
 
+
     // Update is called once per frame
-    void Update()
+	void Update(){
+
+	}
+
+    public void updateTotal()
     {
         monstersAlive = GameObject.FindGameObjectsWithTag("Monster").Length;
     }
@@ -34,14 +42,6 @@ public class WaveController : MonoBehaviour
     {
         wave = 0;
     }
-    public void setWaveMAx(int val)
-    {
-        waveMax = val;
-    }
-    public int getWaveMax()
-    {
-        return waveMax;
-    }
     public void setGame(bool val)
     {
         gameStarted = val;
@@ -50,14 +50,14 @@ public class WaveController : MonoBehaviour
     {
         return gameStarted;
     }
-
     public void setMonstersAlive(int val)
     {
         monstersAlive = val;
     }
-    public int getMonstersAlive()
+    public float getMonstersAlive()
     {
-        return monstersAlive;
+        
+        return Mathf.Ceil(monstersAlive);
     }
     public void decrMonstersAlive()
     {
@@ -66,6 +66,18 @@ public class WaveController : MonoBehaviour
 
     public void startWave()
     {
-        monstersAlive = 2;
+        wave++;
+        monstersAlive = monstersToSpawn;
+        IncreaseDifficulty();
+    }
+
+    public void IncreaseDifficulty()
+    {
+        if (Time.time > increaseDiffTime)
+        {
+            monstersToSpawn++;
+            monsterMovement.updateSpeed();
+            increaseDiffTime = Time.time + period;
+        }
     }
 }

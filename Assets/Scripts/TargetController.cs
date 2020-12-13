@@ -19,8 +19,7 @@ public class TargetController : MonoBehaviour
         //Calculating distance of the screen 
         float screenRatio = (float)Screen.width / (float)Screen.height;
         float trueXWidth = Camera.main.orthographicSize * screenRatio * 2;
-
-        dist = trueXWidth;
+        dist = trueXWidth + 20;
     }
 
     // Update is called once per frame
@@ -67,7 +66,6 @@ public class TargetController : MonoBehaviour
                 enemy_pos = new Vector2(target.transform.position.x, target.transform.position.y);
 
             }
-
         }
         if (target == null)
         {
@@ -81,16 +79,19 @@ public class TargetController : MonoBehaviour
     //the enemy on the right side of the player sprite.
     Vector2 DetermineStopPoint(GameObject targetObj)
     {
+        
         float comp_dist = targetObj.transform.position.x - transform.position.x;
 
         if (comp_dist >= 0)
         {
             enemy_pos = new Vector2(target.transform.position.x, target.transform.position.y);
+            //Debug.Log("GREATER: " + enemy_pos.ToString());
         }
 
         else if (comp_dist < 0)
         {
             enemy_pos = new Vector2(target.transform.position.x , target.transform.position.y);
+            //Debug.Log("GREATER: " + enemy_pos.ToString());
         }
 
         return enemy_pos;

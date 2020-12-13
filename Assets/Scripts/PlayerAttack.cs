@@ -6,8 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public float attackRange = 2.5f;    //the reach of player's attack
     public float delay = 0.25f; //how long before an attack registers.
-    public float attackDuration = 0.5f;    //how long until can attack again.
-
+    public float attackDuration = 0.4f;    //how long until can attack again.
     public float playerTimer = 0.0f;
     public bool attackStarted = false;
     public string keyPressed;
@@ -22,7 +21,6 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (attackStarted)
         {
             if (playerTimer > delay && hasAlreadyAttacked == false)
@@ -64,6 +62,8 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
         }
+		AudioManager.PlaySound("sword_hit");
+		AudioManager.PlayRandom("swoosh", 4);
     }
 
     public bool canStartAttack()

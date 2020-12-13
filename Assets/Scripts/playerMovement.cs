@@ -13,7 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public SpriteRenderer playerSpriteRenderer;
     public GameObject[] monsterList;
     private Animator playerAnimator;
-    
+	private bool hasDied = false;
+
 
 
     // Start is called before the first frame update
@@ -27,7 +28,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame  
     void Update()
     {
-
+        if (PlayerInfo.health <= 0 && !hasDied)
+        {
+			hasDied = true;
+            playerAnimator.SetTrigger("PlayerDie");
+			AudioManager.PlaySound("death", 0.3f);
+            return;
+        }
         //Move this part of the script somewehere else later
         monsterList = GameObject.FindGameObjectsWithTag("Monster");
         List<string> keyTextList = new List<string>();
@@ -38,12 +45,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 keyTextList.Add(monster.GetComponent<Monster>().GetKey());
             }
-            
+
         }
-        
 
         // "A" and "D" movement keys to move left and right (may remove later)
-        // "J" for attack
+        // "J, K, L, etc." for attack as of right now
+
         if (Input.GetKey("a"))
         {
             transform.Translate(Vector2.left * Time.deltaTime * walkSpeed, Space.World);
@@ -55,7 +62,8 @@ public class PlayerMovement : MonoBehaviour
             playerSpriteRenderer.flipX = false;
         }
 
-        foreach(string validKey in keyTextList)
+
+        foreach (string validKey in keyTextList)
         {
             if (Input.GetKeyDown(validKey))
             {
@@ -63,15 +71,22 @@ public class PlayerMovement : MonoBehaviour
                 playerAttack.keyPressed = validKey;
                 if (playerAttack.canStartAttack())
                 {
-                    playerAnimator.SetTrigger("Attack");
+                    int randomNum = Random.Range(1, 3);
+                    if (randomNum == 1)
+                    {
+                        playerAnimator.SetTrigger("Attack1");
+                    }
+                    else if  (randomNum == 2)
+                    {
+                        playerAnimator.SetTrigger("Attack2");
+                    }
+                    
                     playerAttack.startAttack();
-                    //Debug.Log(" DOING ANIMATION");
                 }
             }
-            
+
 
         }
     }
 
 }
-
