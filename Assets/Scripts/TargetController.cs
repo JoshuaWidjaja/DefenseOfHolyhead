@@ -53,7 +53,7 @@ public class TargetController : MonoBehaviour
         float min = dist;
         target = null;
         foreach (GameObject player in tmp)
-        {
+        {   
             //Calculated initially when enemy is first spawned to assign them the Player as a target.
 
             float comp_dist = player.transform.position.x - transform.position.x;
