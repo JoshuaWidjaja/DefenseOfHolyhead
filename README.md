@@ -1,17 +1,28 @@
-# Excellence Interactive
+# CONTROLS 
+"A" - Shift character to face left
+"D" - Shift character to face right
+"LeftAlt" - Damage yourself (Used to end game if needed.
 
-### Setup
+"Other alphabet keys" - Used to damage enemies as they approach. Only applies if the key that you press matches the key that appears above the enemy.
 
-1. In Unity Hub, make a new 2D project called EI (thats an 'i', not 'L')
-2. cd to the new folder that Unity creates and do:
-	1. rm -rf Assets && rm -rf ProjectSettings
-	2. git init
-	3. git remote add origin https://github.com/xjtn18/EI.git
-	4. git pull origin master
+# CREDITS 
+Shawn Broffman 
 
-Set Unity Version to 2020.1.6f1
+Kurtis Chow
 
-### Notes
-Aside from 'Assets' and 'ProjectSettings', all other folders don't need to be in version control and so are in the gitignore.
+Daniel Ku
+
+Jacob Nardone
+
+Duy Nguyen
+
+Joshua Widjaja    
 
 
+# SPECIAL THANKS 
+Special thanks to Tiny Studios, BlackSpire, Luiz Melo, and Pixelmush,
+for providing free Unity assests for us to use within the game itself.
+
+
+Thank you for downloading and choosing to play our game! This game was created for our CS113 Game Development course in University under Professor Denenberg
+We had a great time developing the game and learning more about the game development process.
