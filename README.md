@@ -1,3 +1,6 @@
+# DOWNLOAD
+You can find and download the game here https://themightywolfe.itch.io/defense-of-holyhead
+
 # CONTROLS 
 "A" - Shift character to face left
 "D" - Shift character to face right
