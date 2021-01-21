@@ -27,5 +27,4 @@ Special thanks to Tiny Studios, BlackSpire, Luiz Melo, and Pixelmush,
 for providing free Unity assests for us to use within the game itself.
 
 
-Thank you for downloading and choosing to play our game! This game was created for our CS113 Game Development course in University under Professor Denenberg
-We had a great time developing the game and learning more about the game development process.
+Thank you for downloading and choosing to play our game! This game was created for our CS113 Game Development course under Professor Denenberg at the University of California, Irvine. We had a great time developing the game and learning more about the game development process, and we hope you enjoy the game as well!
